@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Удалить класс</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+        <div>
+            <h1>Удалить класс</h1>
+            <h2>{{ classroom.title }}</h2>
+            <p>Учитель: {{ classroom.teacher.fullname }}</p>
+            <p>Удалить этот класс? Ученики этого класса и их оценки тоже будут удалены.</p>
+            <form method="POST">
+                {% csrf_token %}
+                <div>
+                    <button type="submit">Удалить</button>
+                    <a href="http://127.0.0.1:8000/get_classrooms/">Отмена</a>
+                    <a href="http://127.0.0.1:8000/">Главная</a>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

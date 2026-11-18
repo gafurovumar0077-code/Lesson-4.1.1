@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Классы</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+        <h1>Классы</h1>
+        {% for classroom in classrooms %}
+            <div>
+                <div>
+                    <div>
+                        <h1>{{ classroom.title }}</h1>
+                        <h2>Учитель: {{ classroom.teacher.fullname }}</h2>
+                    </div>
+                </div>
+                <div>
+                    <a href="http://127.0.0.1:8000/update_classroom/{{ classroom.id }}/">Изменить</a>
+                    <a href="http://127.0.0.1:8000/delete_classroom/{{ classroom.id }}/">Удалить</a>
+                </div>
+            </div>
+        {% endfor %}
+        <div>
+            <a href="http://127.0.0.1:8000/create_classroom/">Добавить класс</a>
+            <a href="http://127.0.0.1:8000/">Главная</a>
+        </div>
+    </body>
+</html>

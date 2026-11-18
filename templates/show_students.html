@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ученики</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+        <h1>Ученики</h1>
+        {% for student in students %}
+            <div>
+                <div>
+                    <div>
+                        <h2>{{ student.fullname }}</h2>
+                        <p>Логин: {{ student.user.username }}</p>
+                        <p>Группа: {{ student.classroom.title }}</p>
+                        <p>Телефон: {{ student.phone }}</p>
+                    </div>
+                </div>
+                <div>
+                    <a href="http://127.0.0.1:8000/update_student/{{ student.id }}/">Изменить</a>
+                    <a href="http://127.0.0.1:8000/delete_student/{{ student.id }}/">Удалить</a>
+                </div>
+            </div>
+        {% endfor %}
+        <div>
+            <a href="http://127.0.0.1:8000/create_student/">Добавить ученика</a>
+            <a href="http://127.0.0.1:8000/">Главная</a>
+        </div>
+    </body>
+</html>

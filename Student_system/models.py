@@ -14,7 +14,7 @@ class Teacher(models.Model):
 
 class Classroom(models.Model):
     title = models.CharField(max_length=140)
-    teacher = models.CharField(120)
+    teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
     created_at = models.DateTimeField(default=datetime.now())
     
 
@@ -29,7 +29,7 @@ class Student(models.Model):
 class Grade(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
-    grade = models.IntegerField(default=None)
+    grade = models.IntegerField()
     status = models.BooleanField(default=True)
     comment = models.TextField(max_length=200)
     data = models.DateField(default=date.today)

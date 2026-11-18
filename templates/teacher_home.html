@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Кабинет учителя</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+        <h1>Кабинет учителя</h1>
+        <div>
+            <div>
+                <h1>{{ teacher.fullname }}</h1>
+                <h2>Предмет: {{ teacher.subject }}</h2>
+                <p>Телефон: {{ teacher.phone }}</p>
+                <p>Логин: {{ teacher.user.username }}</p>
+            </div>
+        </div>
+        <h2>Мои оценки и посещаемость</h2>
+        {% for grade in grades %}
+            <div>
+                <div>
+                    <h1>{{ grade.student.fullname }}</h1>
+                    <h2>Оценка: {{ grade.grade }}</h2>
+                    <p>Класс: {{ grade.student.classroom.title }}</p>
+                    <p>Посещаемость: {{ grade.status|yesno:'Присутствовал,Отсутствовал' }}</p>
+                    <p>Причина отсутствия: {{ grade.comment }}</p>
+                    <p>Дата занятия: {{ grade.data }}</p>
+                </div>
+                <div>
+                    <a href="http://127.0.0.1:8000/update_grade/{{ grade.id }}/">Изменить</a>
+                    <a href="http://127.0.0.1:8000/delete_grade/{{ grade.id }}/">Удалить</a>
+                </div>
+            </div>
+        {% endfor %}
+        <div>
+            <a href="http://127.0.0.1:8000/create_grade/">Добавить оценку</a>
+            <a href="http://127.0.0.1:8000/get_grades/">Все оценки</a>
+            <a href="http://127.0.0.1:8000/">Главная</a>
+            <form method="POST" action="http://127.0.0.1:8000/logout/">
+                {% csrf_token %}
+                <button type="submit">Выйти</button>
+            </form>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Удалить оценку</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+        <div>
+            <h1>Удалить оценку</h1>
+            <h2>{{ grade.student.fullname }}</h2>
+            <p>Учитель: {{ grade.teacher.fullname }}</p>
+            <p>Оценка: {{ grade.grade }}</p>
+            <p>Посещаемость: {{ grade.status|yesno:'Присутствовал,Отсутствовал' }}</p>
+            <p>Причина отсутствия: {{ grade.comment }}</p>
+            <p>Дата занятия: {{ grade.data }}</p>
+            <p>Вы уверены, что хотите удалить эту запись?</p>
+            <form method="POST">
+                {% csrf_token %}
+                <div>
+                    <button type="submit">Удалить</button>
+                    <a href="http://127.0.0.1:8000/get_grades/">Отмена</a>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

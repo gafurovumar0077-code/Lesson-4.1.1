@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Оценки</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+        <h1>Оценки и посещаемость</h1>
+        {% for grade in grades %}
+            <div>
+                <div>
+                    <h1>{{ grade.student.fullname }}</h1>
+                    <h2>Оценка: {{ grade.grade }}</h2>
+                    <p>Учитель: {{ grade.teacher.fullname }}</p>
+                    <p>Предмет: {{ grade.teacher.subject }}</p>
+                    <p>Посещаемость: {{ grade.status|yesno:'Присутствовал,Отсутствовал' }}</p>
+                    <p>Причина отсутствия: {{ grade.comment }}</p>
+                    <p>Дата занятия: {{ grade.data }}</p>
+                </div>
+            </div>
+        {% endfor %}
+        <div>
+            <a href="http://127.0.0.1:8000/">Главная</a>
+        </div>
+    </body>
+</html>

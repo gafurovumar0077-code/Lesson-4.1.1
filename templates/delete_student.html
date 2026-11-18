@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Удалить ученика</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+        <div>
+            <h1>Удалить ученика?</h1>
+            <p>ФИО: {{ student.fullname }}</p>
+            <p>Группа: {{ student.classroom.title }}</p>
+            <form method="POST">
+                {% csrf_token %}
+                <div>
+                    <button type="submit">Удалить</button>
+                    <a href="http://127.0.0.1:8000/get_students/">Отмена</a>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

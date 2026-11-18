@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Администратор</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+        <h1>Кабинет администратора</h1>
+
+        <div>
+            <h1>Ученики</h1>
+            <div>
+                <a href="http://127.0.0.1:8000/create_student/">Добавить ученика</a>
+                <a href="http://127.0.0.1:8000/get_students/">Все ученики</a>
+            </div>
+        </div>
+
+        <div>
+            <h1>Учителя</h1>
+            <div>
+                <a href="http://127.0.0.1:8000/create_teacher/">Добавить учителя</a>
+                <a href="http://127.0.0.1:8000/get_teachers/">Все учителя</a>
+            </div>
+        </div>
+
+        <div>
+            <h1>Группы</h1>
+            <div>
+                <a href="http://127.0.0.1:8000/create_classroom/">Добавить группу</a>
+                <a href="http://127.0.0.1:8000/get_classrooms/">Все группы</a>
+            </div>
+        </div>
+
+        <div>
+            <h1>Журнал</h1>
+            <div>
+                <a href="http://127.0.0.1:8000/get_grades/">Все оценки и посещаемость</a>
+            </div>
+        </div>
+
+        <div>
+            <a href="http://127.0.0.1:8000/registration/">Создать аккаунт</a>
+            <a href="http://127.0.0.1:8000/">Главная</a>
+            <form method="POST" action="http://127.0.0.1:8000/logout/">
+                {% csrf_token %}
+                <button type="submit">Выйти</button>
+            </form>
+        </div>
+    </body>
+</html>

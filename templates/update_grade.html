@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Изменить оценку</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+        <div>
+            <h1>Изменить оценку</h1>
+            <form method="POST">
+                {% csrf_token %}
+                <div>
+                    <p>Учитель</p>
+                    <input type="text" value="{{ grade.teacher.fullname }}" readonly>
+                </div>
+                <div>
+                    <p>Ученик</p>
+                    <input type="text" value="{{ grade.student.fullname }}" readonly>
+                </div>
+                <div>
+                    <p>Оценка</p>
+                    <input type="number" name="grade" id="grade" placeholder="Оценка" value="{{ grade.grade }}" step="1" required>
+                </div>
+                <div>
+                    Присутствовал
+                    <input type="checkbox" name="status" id="status" value="on" {{ grade.status|yesno:'checked,' }}>
+                    <p>Снимите отметку, если ученик отсутствовал.</p>
+                </div>
+                <div>
+                    <p>Причина отсутствия</p>
+                    <input type="text" name="comment" id="comment" placeholder="Причина отсутствия" value="{{ grade.comment }}" maxlength="200">
+                </div>
+                <div>
+                    <p>Дата занятия</p>
+                    <input type="text" name="data" id="data" placeholder="ГГГГ-ММ-ДД" value="{{ grade.data.year }}-{{ grade.data.month }}-{{ grade.data.day }}" required>
+                </div>
+                <div>
+                    <button type="submit">Сохранить</button>
+                    <a href="http://127.0.0.1:8000/get_grades/">Оценки</a>
+                    <a href="http://127.0.0.1:8000/">Главная</a>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

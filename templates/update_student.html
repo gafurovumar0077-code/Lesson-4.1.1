@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Изменить ученика</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+        <div>
+            <h1>Изменить ученика</h1>
+            <p>Логин: {{ student.user.username }}</p>
+            <form method="POST">
+                {% csrf_token %}
+                <div>
+                    <input type="text" name="fullname" id="fullname" placeholder="ФИО ученика" value="{{ student.fullname }}" maxlength="200" required>
+                </div>
+                <div>
+                    <p>Группа</p>
+                    <select name="classroom_id" id="classroom_id" required>
+                        <option value="{{ student.classroom.id }}">{{ student.classroom.title }}</option>
+                        {% for classroom in classrooms %}
+                            <option value="{{ classroom.id }}">{{ classroom.title }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div>
+                    <input type="text" name="phone" id="phone" placeholder="Телефон" value="{{ student.phone }}" maxlength="13" required>
+                </div>
+                <div>
+                    <button type="submit">Сохранить</button>
+                    <a href="http://127.0.0.1:8000/get_students/">Все ученики</a>
+                    <a href="http://127.0.0.1:8000/">Главная</a>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
