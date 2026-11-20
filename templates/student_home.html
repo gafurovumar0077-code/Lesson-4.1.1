@@ -7,7 +7,7 @@
         <title>Кабинет ученика</title>
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
     </head>
-    <body>
+    <body id="list-page">
         <h1>Кабинет ученика</h1>
         <div>
             <div>
@@ -30,7 +30,7 @@
                 </div>
             </div>
         {% endfor %}
-        <div>
+        <div id="page-actions">
             <a href="http://127.0.0.1:8000/">Главная</a>
             <form method="POST" action="http://127.0.0.1:8000/logout/">
                 {% csrf_token %}

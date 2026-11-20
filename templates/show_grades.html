@@ -7,7 +7,7 @@
         <title>Оценки</title>
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
     </head>
-    <body>
+    <body id="list-page">
         <h1>Оценки и посещаемость</h1>
         {% for grade in grades %}
             <div>
@@ -22,7 +22,7 @@
                 </div>
             </div>
         {% endfor %}
-        <div>
+        <div id="page-actions">
             <a href="http://127.0.0.1:8000/">Главная</a>
         </div>
     </body>

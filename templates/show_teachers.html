@@ -7,7 +7,7 @@
         <title>Учителя</title>
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
     </head>
-    <body>
+    <body id="list-page">
         <h1>Учителя</h1>
         {% for teacher in teachers %}
             <div>
@@ -25,7 +25,7 @@
                 </div>
             </div>
         {% endfor %}
-        <div>
+        <div id="page-actions">
             <a href="http://127.0.0.1:8000/create_teacher/">Добавить учителя</a>
             <a href="http://127.0.0.1:8000/">Главная</a>
         </div>

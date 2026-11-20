@@ -7,7 +7,7 @@
         <title>Классы</title>
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
     </head>
-    <body>
+    <body id="list-page">
         <h1>Классы</h1>
         {% for classroom in classrooms %}
             <div>
@@ -23,7 +23,7 @@
                 </div>
             </div>
         {% endfor %}
-        <div>
+        <div id="page-actions">
             <a href="http://127.0.0.1:8000/create_classroom/">Добавить класс</a>
             <a href="http://127.0.0.1:8000/">Главная</a>
         </div>

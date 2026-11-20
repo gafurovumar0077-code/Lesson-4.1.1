@@ -7,7 +7,7 @@
         <title>Кабинет учителя</title>
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
     </head>
-    <body>
+    <body id="list-page">
         <h1>Кабинет учителя</h1>
         <div>
             <div>
@@ -34,7 +34,7 @@
                 </div>
             </div>
         {% endfor %}
-        <div>
+        <div id="page-actions">
             <a href="http://127.0.0.1:8000/create_grade/">Добавить оценку</a>
             <a href="http://127.0.0.1:8000/get_grades/">Все оценки</a>
             <a href="http://127.0.0.1:8000/">Главная</a>

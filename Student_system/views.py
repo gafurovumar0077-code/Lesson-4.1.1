@@ -224,17 +224,17 @@ def delete_grade(request, pk):
 
 @login_required
 def teacher_home(request):
-    teacher = Teacher.objects.filter(user=request.user).first()
-    if teacher is None:
-        return redirect('home')
-    grades = Grade.objects.filter(teacher=teacher)
-    return render(request, 'teacher_home.html', {'teacher': teacher, 'grades': grades})
+    teachers = Teacher.objects.filter(user=request.user)
+    for teacher in teachers:
+        grades = Grade.objects.filter(teacher=teacher)
+        return render(request, 'teacher_home.html', {'teacher': teacher, 'grades': grades})
+    return redirect('home')
 
 
 @login_required
 def student_home(request):
-    student = Student.objects.filter(user=request.user).first()
-    if student is None:
-        return redirect('home')
-    grades = Grade.objects.filter(student=student)
-    return render(request, 'student_home.html', {'student': student, 'grades': grades})
+    students = Student.objects.filter(user=request.user)
+    for student in students:
+        grades = Grade.objects.filter(student=student)
+        return render(request, 'student_home.html', {'student': student, 'grades': grades})
+    return redirect('home')
